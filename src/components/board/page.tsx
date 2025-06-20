@@ -43,6 +43,7 @@ export default function Board() {
       }
     });
     setBoard(newBoard);
+    setUser({ x: 0, y: 0, direction: 1 });
   }
 
   return (
@@ -60,7 +61,7 @@ export default function Board() {
                 <div key={cellIndex} className={`${cellClass}`}>
                   {isUser && (
                     <div className={styles.user}>
-                      <div className={styles[`user${directionName}`]} />
+                      <div className={styles[`user${directionName}` as keyof typeof styles]} />
                     </div>
                   )}
                 </div>
