@@ -1,20 +1,77 @@
 .board {
   display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  width: 543px;
-  height: 543px;
+  flex-direction: column;
   border: 1px solid #000;
 }
 
-.road {
+.row {
+  display: flex;
+}
+
+.road,
+.obstacle {
+  position: relative;
   width: 60px;
   height: 60px;
+}
+
+.road {
   background-color: aqua;
 }
 
 .obstacle {
-  width: 60px;
-  height: 60px;
   background-color: #000;
+}
+
+.user {
+  position: absolute;
+  position: relative;
+  top: 5px;
+  left: 5px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.userUp,
+.userRight,
+.userDown,
+.userLeft {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+}
+
+.userUp {
+  top: -6px;
+  width: 40px;
+  background-color: red;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.userRight {
+  left: 40px;
+  height: 40px;
+  background-color: red;
+  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+}
+
+.userDown {
+  bottom: -6px;
+  width: 40px;
+  background-color: red;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}
+
+.userLeft {
+  left: -6px;
+  height: 40px;
+  background-color: red;
+  clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
 }
