@@ -1,0 +1,20 @@
+.board {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  width: 543px;
+  height: 543px;
+  border: 1px solid #000;
+}
+
+.road {
+  width: 60px;
+  height: 60px;
+  background-color: aqua;
+}
+
+.obstacle {
+  width: 60px;
+  height: 60px;
+  background-color: #000;
+}
