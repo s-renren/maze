@@ -46,10 +46,34 @@ export default function Board() {
     setUser({ x: 0, y: 0, direction: 1 });
   }
 
+  // ユーザーから見て左、真っすぐ、右の順で進む。行き止まりは戻る
+
+  function moveUser() {
+    const { x, y, direction } = user;
+    const nextRoad = getPriorityDirections(direction);
+    setUser({
+      x: x + directions[nextRoad].x,
+      y: y + directions[nextRoad].y,
+      direction: nextRoad,
+    });
+  }
+
+  function getPriorityDirections(currentDirIndex: number): number {
+    const nextDirections = [(currentDirIndex + 3) % 4, currentDirIndex, (currentDirIndex + 1) % 4];
+    const canMove = nextDirections.find(
+      (dirIndex) => board[user.y + directions[dirIndex].y]?.[user.x + directions[dirIndex].x] === 0,
+    );
+    if (canMove === undefined) {
+      return (currentDirIndex + 2) % 4;
+    } else {
+      return canMove;
+    }
+  }
+
   return (
     <div>
       <button onClick={knockdownObstacle}>迷路生成</button>
-      <button>プレイヤーを進める</button>
+      <button onClick={moveUser}>プレイヤーを進める</button>
       <div className={styles.board}>
         {board.map((row, rowIndex) => (
           <div key={rowIndex} className={styles.row}>
