@@ -9,10 +9,15 @@
 }
 
 .road,
+.startGoal,
 .obstacle {
   position: relative;
   width: 60px;
   height: 60px;
+}
+
+.startGoal {
+  background-color: yellow;
 }
 
 .road {
